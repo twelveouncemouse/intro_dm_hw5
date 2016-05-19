@@ -70,12 +70,6 @@ public class Accessor {
                 Logger.getLogger(Accessor.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        /*else {
-            System.out.println(String.format("Rate limit status"));
-            System.out.println(String.format("Limit: %d", rateLimitStatus.getLimit()));
-            System.out.println(String.format("Remaining: %d", rateLimitStatus.getRemaining()));
-            System.out.println(String.format("Seconds until reset: %d", rateLimitStatus.getSecondsUntilReset()));            
-        }*/
     }
     
     private static Query buildSearchQuery(String query, Date since, Date until, String lang, int querySize) {
@@ -106,11 +100,9 @@ public class Accessor {
             Query queryObject = Accessor.buildSearchQuery(query, since, until, lang, querySize);
             QueryResult result = twitter.search(queryObject);
             List<Status> tweets = result.getTweets();
-            //do {
             for (Status tweet : tweets) {
                 methodResult.add(Accessor.buildTweetFromStatus(tweet));
             }
-            //} while ((queryObject = result.nextQuery()) != null);
         }
         catch (TwitterException te) {
             System.err.println(String.format("TwitterException occured: %s", te.getMessage()));
