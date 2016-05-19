@@ -30,10 +30,6 @@ public class AccessorTest {
                     null,
                     100);
             assertTrue(data.size() > 0);
-            //System.out.println(String.format("%d tweets downloaded successfully", data.size()));
-            //for (Tweet t : data) {
-            //    System.out.println(t.toString());
-            //}            
         }
         catch (ParseException exc) {
             System.err.println("ParseException?! It couldn't be true! " + exc.getMessage());
